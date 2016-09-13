@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+
+configurations{
+    provided
+}
+
+sourceSets{
+    main.compileClasspath+=configurations.provided
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+idea{
+    module{
+        scopes.PROVIDED.plus+=[configurations.provided]
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    provided 'com.google.android:android:4.0.1.2'
+}
